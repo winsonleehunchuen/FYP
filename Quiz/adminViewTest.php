@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin View Test</title>
+	<link rel="icon" href="images/icon.png" type="image/gif" sizes="16x16">
+	<link href="https://fonts.googleapis.com/css?family=Merienda+One|Yeseva+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<style>
+		body{
+			margin:0;
+			background-color:#DBFFFF;
+		}
+
+		table,td,th {
+		 	border-collapse: collapse;
+		  	text-align: center;
+		    font-size: 17px;
+		}
+
+		.all-Table{
+			position: absolute;
+			margin: 10% 1%;
+			width: 99%;
+		}
+
+		.search{
+			position: absolute;
+			padding-left:67%;
+      		font-weight: bold;
+		}
+
+		.move{
+			position: absolute;
+			left: 57%;
+			font-weight: bold;
+		}
+
+	</style>
+</head>
+<body>
+<?php include"adminMenu.php";?>
+<center>
+
+<div class="all-Table table-striped">
+	<div class="search">
+		<div class="move">
+		<a class="btn btn-danger" href="adminTestAdd.php">Add Test</a>
+		</div>
+		<form method="post">
+			<input placeholder="Enter Subject Name" type="text" name="searchSubject">
+			<input class="button" type="submit" name="buttonSubmitSearch" value="Search">
+		</form>
+	</div>
+
+<table border="1px solid black" width="70%" >
+<?php
+	include"database.php";
+
+	if(isset($_POST['buttonSubmitSearch'])){
+		$subject = $_POST['searchSubject'];
+
+		$result1=mysqli_query($con,"select t.test_id,s.sub_name,t.test_name,t.total_question from quiz_test t, quiz_subject s where s.sub_id=t.sub_id and s.sub_name LIKE '%$subject%'")or die(mysqli_error());
+
+		if(mysqli_num_rows($result1) <= 0 || $subject == ""){
+
+			echo "<br>";
+			echo "<br>";
+			echo "<br>";
+			echo "<br>";
+			echo '<h1>No result found!</h1>';
+
+		}else{
+
+		echo "<br><br><br><tr><th>ID</th><th>Subject Name</th><th>Test Name</th><th>Total Question</th><th>Update</th><th>Delete</th></tr>";
+
+			while($test1 = mysqli_fetch_array($result1)){
+			$id1 = $test1['test_id'];
+
+			echo"<tr><td width=70>".$test1['test_id']."</td>";
+			echo"<td>" .$test1['sub_name']."</td>";
+			echo"<td>". $test1['test_name']. "</td>";
+			echo"<td>". $test1['total_question']."</td>";
+			echo "<td><a href='editTest.php?test_id=$id1'><span class='glyphicon glyphicon-edit'></span></a></td>";
+			echo "<td><a href='deleteTest.php?test_id=$id1'><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
+
+			}
+
+		}
+
+	}else{
+
+		$result=mysqli_query($con,"select t.test_id,s.sub_name,t.test_name,t.total_question from quiz_test t, quiz_subject s where s.sub_id=t.sub_id") or die(mysqli_error());
+	
+		echo "<br><br><br><tr><th>ID</th><th>Subject Name</th><th>Test Name</th><th>Total Question</th><th>Update</th><th>Delete</th></tr>";
+			
+		while($test=mysqli_fetch_assoc($result)){
+		$id=$test['test_id'];
+	
+		echo"<tr><td width=70>".$test['test_id']."</td>";
+		echo"<td>" .$test['sub_name']."</td>";
+		echo"<td>" .$test['test_name']."</td>";
+		echo"<td>" .$test['total_question']."</td>";
+		echo "<td><a href='editTest.php?test_id=$id'><span class='glyphicon glyphicon-edit'></span></a></td>";
+		echo "<td><a href='deleteTest.php?test_id=$id'><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
+
+	}
+
+}
+
+?>
+</table>
+</div>
+</center>
+</body>
+</html>
