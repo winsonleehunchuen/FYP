@@ -68,7 +68,7 @@ nav{
 	font-size: 19px;
 }
 
-andrew hello
+
 
 </style>
 <div style="position:fixed; width: 100%; z-index: 99;">
