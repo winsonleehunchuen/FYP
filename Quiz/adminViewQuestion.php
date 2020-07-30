@@ -94,7 +94,7 @@ include"database.php";
 	}else{
 		$i=1;
 
-		$result=mysqli_query($con,"select q.que_id,t.test_name,q.que_desc from quiz_test t, quiz_question q where t.test_id=q.test_id") or die(mysqli_error());
+		$result=mysqli_query($con,"select q.que_id,t.test_name,q.que_desc from quiz_question q, quiz_test t where t.test_id=q.test_id") or die(mysqli_error());
 
 		echo "<br><br><br><tr><th>ID</th><th>Test Name</th><th>Question</th><th>Update</th><th>Delete</th></tr>";
 
