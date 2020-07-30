@@ -54,11 +54,25 @@ session_start();
 
 include"database.php";
 
+$result1=mysqli_query($con,"select s.sub_id, s.sub_name, count(t.sub_id) from quiz_subject s, quiz_test t 
+where s.sub_id=t.sub_id GROUP BY t.sub_id");
+
 $result=mysqli_query($con,"select * from quiz_subject");
 
-while($row=mysqli_fetch_row($result))
-{
-	echo "<tr style='height:40px; background-color:white;'><td><a href=userShowtest.php?subid=$row[0]><font size=4>$row[1]</font></a></td></tr>";
+while($row=mysqli_fetch_row($result)){
+$row1=mysqli_fetch_row($result1);
+
+	if($row1 != ""){
+
+	echo "<tr style='height:40px; background-color:white;'><td><a href=userShowtest.php?subid=$row[0]><font size=4>$row[1]</font></a>
+	<font size=2>\t($row1[2] Tests)</font></td></tr>";
+
+	}else{
+
+	echo "<tr style='height:40px; background-color:white;'><td><a href=userShowtest.php?subid=$row[0]><font size=4>$row[1]</font></a>
+	<font size=2>\t(0 Tests)</font></td></tr>";
+
+	}
 }
 
 ?>
