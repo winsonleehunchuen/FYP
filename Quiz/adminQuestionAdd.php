@@ -157,7 +157,7 @@
         </tr>
         <tr>
           <td width ="300px" height="50px" >Enter True Answer  : </td>
-          <td width ="1100px" height="50px"><input class="form-control" placeholder="Choose one answer from Answer1 to Answer4" name="anstrue" type="text" id="anstrue" value="<?php echo $anstrue?>"></td>
+          <td width ="1100px" height="50px"><input class="form-control" placeholder="Choose one answer from Answer1 to Answer4" name="anstrue" type="number" id="anstrue" value="<?php echo $anstrue?>"></td>
         </tr>
       </table><br>
       <input type="submit" name="Submit1" value="Add">

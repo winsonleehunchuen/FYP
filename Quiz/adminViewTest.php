@@ -61,7 +61,7 @@
 
 		$i1=1;
 
-		$result1=mysqli_query($con,"select t.test_id,s.sub_name,t.test_name,t.total_question from quiz_test t, quiz_subject s where s.sub_id=t.sub_id and s.sub_name LIKE '%$subject%'")or die(mysqli_error());
+		$result1=mysqli_query($con,"select t.test_id,s.sub_name,t.test_name,t.date from quiz_test t, quiz_subject s where s.sub_id=t.sub_id and s.sub_name LIKE '%$subject%'")or die(mysqli_error());
 
 		if(mysqli_num_rows($result1) <= 0 || $subject == ""){
 
@@ -73,17 +73,17 @@
 
 		}else{
 
-		echo "<br><br><br><tr><th>ID</th><th>Subject Name</th><th>Test Name</th><th>Total Question</th><th>Update</th><th>Delete</th></tr>";
+		echo "<br><br><br><tr><th>ID</th><th>Subject Name</th><th>Test Name</th><th>Date</th><th>Update</th><th>Delete</th></tr>";
 
 			while($test1 = mysqli_fetch_array($result1)){
 			$id1 = $test1['test_id'];
 
-			echo"<tr><td width=70>".$i1."</td>";
-			echo"<td>" .$test1['sub_name']."</td>";
-			echo"<td>". $test1['test_name']. "</td>";
-			echo"<td>". $test1['total_question']."</td>";
-			echo "<td><a href='editTest.php?test_id=$id1'><span class='glyphicon glyphicon-edit'></span></a></td>";
-			echo "<td><a href='deleteTest.php?test_id=$id1'><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
+			echo"<tr><td width=50>".$i1."</td>";
+			echo"<td width=280>" .$test1['sub_name']."</td>";
+			echo"<td width=280>". $test1['test_name']. "</td>";
+			echo"<td width=280>" .date("d-m-Y ", strtotime($test1['date']))."<br>".date("h:i A ", strtotime($test1['date']))."</td>";
+			echo "<td width=100><a href='editTest.php?test_id=$id1'><span class='glyphicon glyphicon-edit'></span></a></td>";
+			echo "<td width=100><a href='deleteTest.php?test_id=$id1'><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
 
 			$i1++;
 			}
@@ -93,19 +93,19 @@
 	}else{
 		$i=1;
 
-		$result=mysqli_query($con,"select t.test_id,s.sub_name,t.test_name,t.total_question from quiz_test t, quiz_subject s where s.sub_id=t.sub_id") or die(mysqli_error());
+		$result=mysqli_query($con,"select t.test_id,s.sub_name,t.test_name,t.date from quiz_test t, quiz_subject s where s.sub_id=t.sub_id order by t.test_id") or die(mysqli_error());
 	
-		echo "<br><br><br><tr><th>ID</th><th>Subject Name</th><th>Test Name</th><th>Total Question</th><th>Update</th><th>Delete</th></tr>";
+		echo "<br><br><br><tr><th>ID</th><th>Subject Name</th><th>Test Name</th><th>Date</th><th>Update</th><th>Delete</th></tr>";
 			
 		while($test=mysqli_fetch_assoc($result)){
 		$id=$test['test_id'];
 	
-		echo"<tr><td width=70>".$i."</td>";
-		echo"<td>" .$test['sub_name']."</td>";
-		echo"<td>" .$test['test_name']."</td>";
-		echo"<td>" .$test['total_question']."</td>";
-		echo "<td><a href='editTest.php?test_id=$id'><span class='glyphicon glyphicon-edit'></span></a></td>";
-		echo "<td><a href='deleteTest.php?test_id=$id'><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
+		echo"<tr><td width=50>".$i."</td>";
+		echo"<td width=280>" .$test['sub_name']."</td>";
+		echo"<td width=280>" .$test['test_name']."</td>";
+		echo"<td width=280>" .date("d-m-Y ", strtotime($test['date']))."<br>".date("h:i A ", strtotime($test['date']))."</td>";
+		echo "<td width=100><a href='editTest.php?test_id=$id'><span class='glyphicon glyphicon-edit'></span></a></td>";
+		echo "<td width=100><a href='deleteTest.php?test_id=$id'><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
 
 		$i++;
 	}

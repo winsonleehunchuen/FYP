@@ -32,27 +32,27 @@ CREATE TABLE `quiz_test` (
   `test_id` int(5) NOT NULL,
   `sub_id` int(5) DEFAULT NULL,
   `test_name` varchar(300) DEFAULT NULL,
-  `total_question` varchar(150) DEFAULT NULL
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `quiz_test`
 --
 
-INSERT INTO `quiz_test` (`test_id`, `sub_id`, `test_name`, `total_question`) VALUES
-(1, 1, 'C++ Test 1', '5'),
-(2, 1, 'C++ Test 2', '5'),
-(3, 1, 'C++ Test 3', '5'),
-(4, 1, 'C++ Test 4', '5'),
-(5, 2, 'Java Test 1', '5'),
-(6, 2, 'Java Test 2', '5'),
-(7, 2, 'Java Test 3', '5'),
-(8, 3, ' Networking Test 1', '5'),
-(9, 3, ' Networking Test 2', '5'),
-(10, 3, ' Networking Test 3', '5'),
-(11, 4, 'Online C Language Test 1', '5'),
-(12, 4, 'Online C Language Test 2', '5'),
-(13, 4, 'Online C Language Test 3', '5');
+INSERT INTO `quiz_test` (`test_id`, `sub_id`, `test_name`, `date`) VALUES
+(1, 1, 'C++ Test 1', '2020-07-09 09:05:26'),
+(2, 1, 'C++ Test 2', '2020-07-09 09:08:26'),
+(3, 1, 'C++ Test 3', '2020-07-09 09:10:26'),
+(4, 1, 'C++ Test 4', '2020-07-09 09:12:26'),
+(5, 2, 'Java Test 1', '2020-07-09 09:14:26'),
+(6, 2, 'Java Test 2', '2020-07-09 09:15:26'),
+(7, 2, 'Java Test 3', '2020-07-09 09:16:26'),
+(8, 3, ' Networking Test 1', '2020-07-09 09:18:26'),
+(9, 3, ' Networking Test 2', '2020-07-09 09:20:26'),
+(10, 3, ' Networking Test 3', '2020-07-09 09:23:26'),
+(11, 4, 'Online C Language Test 1', '2020-07-09 09:24:26'),
+(12, 4, 'Online C Language Test 2', '2020-07-09 09:26:26'),
+(13, 4, 'Online C Language Test 3', '2020-07-09 09:28:26');
 
 --
 -- Indexes for dumped tables
