@@ -60,6 +60,8 @@ include"database.php";
 	if(isset($_POST['buttonSubmitSearch'])){
 		$testN = $_POST['searchTest'];
 
+		$i1=1;
+
 		$result2=mysqli_query($con,"select q.que_id,t.test_name,q.que_desc from quiz_test t, quiz_question q where t.test_id=q.test_id and t.test_name LIKE '%$testN%'")or die(mysqli_error());
 
 
@@ -78,35 +80,39 @@ include"database.php";
 			while($test1 = mysqli_fetch_array($result2)){
 			$id1=$test1['que_id'];
 
-				echo"<tr><td width=70 height=50>".$test1['que_id']."</td>";
+				echo"<tr><td width=70 height=50>".$i1."</td>";
 				echo"<td width=220>" .$test1['test_name']."</td>";
 				echo"<td width=1020>" .$test1['que_desc']."</td>";
 				echo "<td width=100><a href='editQuestion.php?que_id=$id1'><span class='glyphicon glyphicon-edit'></span></a></td>";
 				echo "<td width=100><a href='deleteQuestion.php?que_id=$id1'><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
-
+			
+				$i1++;
 			}
 
 		}
 
 	}else{
+		$i=1;
 
-		$result=mysqli_query($con,"select q.que_id,t.test_name,q.que_desc from quiz_test t, quiz_question q where t.test_id=q.test_id ") or die(mysqli_error());
+		$result=mysqli_query($con,"select q.que_id,t.test_name,q.que_desc from quiz_test t, quiz_question q where t.test_id=q.test_id") or die(mysqli_error());
 
 		echo "<br><br><br><tr><th>ID</th><th>Test Name</th><th>Question</th><th>Update</th><th>Delete</th></tr>";
 
-		$result1=mysqli_query($con,"select * from quiz_question");		
+		//$result1=mysqli_query($con,"select * from quiz_question");		
 	
-		while($test=mysqli_fetch_assoc($result1)){
+		while($test=mysqli_fetch_array($result)){
 
-		$row=mysqli_fetch_row($result);
+		//$row=mysqli_fetch_row($result);
 		$id=$test['que_id'];
 
-			echo"<tr><td width=70 height=50>".$test['que_id']."</td>";
-			echo"<td width=220>" .$row[1]."</td>";
+			echo"<tr><td width=70 height=50>".$i."</td>";
+			//echo"<td width=220>" .$row[1]."</td>";
+			echo"<td width=220>" .$test['test_name']."</td>";
 			echo"<td width=1020>" .$test['que_desc']."</td>";
 			echo "<td width=100><a href='editQuestion.php?que_id=$id'><span class='glyphicon glyphicon-edit'></span></a></td>";
 			echo "<td width=100><a href='deleteQuestion.php?que_id=$id'><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
-
+		
+		$i++;
 		}
 
 	}

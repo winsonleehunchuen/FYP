@@ -35,6 +35,8 @@
 
 include"database.php";
 
+	$i=1;
+
 	$result=mysqli_query($con,"select * from quizfeedback");	
 		
 		echo"<h1 style='color:black;'>User Feedback</h1><br>";
@@ -43,13 +45,14 @@ include"database.php";
 	while($test=mysqli_fetch_assoc($result)){
 	$id=$test['id'];
 	
-		echo"<tr><td width=50>" .$test['id']."</td>";
+		echo"<tr><td width=50>" .$i."</td>";
 		echo"<td width=150>" .$test['name']."</td>";
 		echo"<td width=250>" .$test['email']."</td>";
 		echo"<td width=320>" .date("d-m-Y ", strtotime($test['reg_date']))."<br>".date("h:i A ", strtotime($test['reg_date']))."</td>";
 		echo"<td width=320>" .$test['feedback']."</td>";
 		echo "<td width=100><a href='deleteFeedback.php?id=$id'><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
 
+	$i++;
 	}
 
 ?>

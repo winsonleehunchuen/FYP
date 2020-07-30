@@ -35,6 +35,8 @@
 
 include"database.php";
 
+	$i=1;
+
 	$result=mysqli_query($con,"select * from quizregisterpage");	
 		
 		echo"<h1 style='color:black;'>Registered User Detail</h1><br>";
@@ -43,7 +45,7 @@ include"database.php";
 	while($test=mysqli_fetch_assoc($result)){
 	$id=$test['id'];
 	
-		echo"<tr><td width=50><font color='black'>" .$test['id']."</font></td>";
+		echo"<tr><td width=50><font color='black'>" .$i."</font></td>";
 		echo"<td width=100><font color='black'>" .$test['loginid']."</font></td>";
 		echo"<td width=150><font color='black'>" .$test['username']."</font></td>";
 		echo"<td width=320><font color='black'>" .$test['address']."</font></td>";
@@ -54,6 +56,7 @@ include"database.php";
 		echo"<td width=100><font color='black'>" .$test['password']."</font></td>";
 		echo "<td width=100><a href='deleteUser.php?id=$id'><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
 
+	$i++;
 	}
 
 ?>

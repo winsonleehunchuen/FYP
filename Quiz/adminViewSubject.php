@@ -35,19 +35,23 @@
 
 include"database.php";
 
+	$i=1;
+	
 	$result=mysqli_query($con,"select * from quiz_subject");	
 			
 		echo "<tr><a class='btn btn-danger' href='adminSubjectAdd.php'>Add Subject</a></tr><br><br>";
 		echo "<tr><th>ID</th><th>Subject Name</th><th>Update</th><th>Delete</th></tr>";
 	
 	while($test=mysqli_fetch_assoc($result)){
+	
 	$id=$test['sub_id'];
 	
-		echo"<tr><td><font color='black'>" .$test['sub_id']."</font></td>";
+		echo"<tr><td><font color='black'>" .$i."</font></td>";
 		echo"<td><font color='black'>" .$test['sub_name']."</font></td>";
 		echo "<td><a href='editSubject.php?sub_id=$id'><span class='glyphicon glyphicon-edit'></span></a></td>";
 		echo "<td><a href='deleteSubject.php?sub_id=$id'><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
-
+	
+	$i++;
 	}
 
 ?>
