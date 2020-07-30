@@ -57,6 +57,7 @@ echo "<h1 align=center><font color=＃FFD700> $row[1] </font></h1>";
 $result1=mysqli_query($con,"select t.test_id, t.test_name, count(q.test_id) from quiz_test t, quiz_question q 
 where t.test_id=q.test_id and t.sub_id = $subid GROUP BY q.test_id");
 
+$re=mysqli_query($con,"select * from quiz_test where sub_id = $subid");
 //$total=mysqli_query($con,"SELECT count(q.test_id) FROM quiz_question q GROUP BY test_id ");
 
 if(mysqli_num_rows($result1) == "")
@@ -69,10 +70,11 @@ if(mysqli_num_rows($result1) == "")
 echo "<h2> Select Quiz Name to Start Quiz 🤗 </h2>";
 echo "<table align=center>";
 
-while($row1=mysqli_fetch_row($result1))
+while($t=mysqli_fetch_row($re))
 {
-	$t=mysqli_fetch_row($total);
-	echo "<tr><td align=center><a href=userQuestion.php?testid=$row1[0]&subid=$subid><font size=4> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $row1[1]  </td><td> ($row[2] questions) </td></tr></font></a>";
+	$row1=mysqli_fetch_row($result1);
+	echo "<tr><td align=center><a href=userQuestion.php?testid=$t[0]&subid=$subid><font size=4>
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $t[2]  </td><td> ($row1[2] questions) </td></tr></font></a>";
 }
 echo "</table>";
 }
