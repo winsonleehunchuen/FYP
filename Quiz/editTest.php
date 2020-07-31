@@ -65,7 +65,7 @@
       die("Connection failed: " . mysqli_connect_error());
     }
 
-    
+
     $sql = "UPDATE quiz_test SET sub_id = '$subid' , test_name = '$testname' WHERE test_id = '$id'  ";
 
     if (mysqli_query($con, $sql)) {
@@ -77,6 +77,7 @@
     mysqli_close($con);
 
     header("location: adminViewTest.php");
+
 
     }else{
 
@@ -105,7 +106,7 @@
                     while($row=mysqli_fetch_array($result))
 
                 {
-                if($row[0]==$subid)
+                if($row[0]==$Subid)
                 {
                   echo "<option value='$row[0]' selected>$row[1]</option>";
                 }

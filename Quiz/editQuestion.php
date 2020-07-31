@@ -92,7 +92,7 @@
 
             ?>
 
-            <div class="style1"><?php echo "Insert Correct Answer Number !";?></div>
+            <div class="style1"><?php echo "Insert True Answer Number !";?></div>
 
             <?php
 
@@ -141,7 +141,7 @@
                 $result=mysqli_query($con,"Select * from quiz_test order by test_id");
                     while($row=mysqli_fetch_array($result))
                 {
-                if($row[0]==$testid)
+                if($row[0]==$Testid)
                 {
                   echo "<option value='$row[0]' selected>$row[2]</option>";
                 }
@@ -175,7 +175,7 @@
         </tr>
         <tr>
           <td width ="300px" height="50px" >Edit True Answer  : </td>
-          <td width ="1100px" height="50px"><input class="form-control" placeholder="Choose one answer from Answer1 to Answer4" value="<?php echo $Trueans?>" name="anstrue" type="number" id="anstrue"></td>
+          <td width ="1100px" height="50px"><input class="form-control" value="<?php echo $Trueans?>" name="anstrue" type="number" id="anstrue"></td>
         </tr>
       </table><br>
       <input type="submit" name="Submit1" value="Update">
