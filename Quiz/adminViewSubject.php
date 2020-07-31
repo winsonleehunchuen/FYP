@@ -40,7 +40,7 @@ include"database.php";
 	$result=mysqli_query($con,"select * from quiz_subject");	
 			
 		echo "<tr><a class='btn btn-danger' href='adminSubjectAdd.php'>Add Subject</a></tr><br><br>";
-		echo "<tr><th>ID</th><th>Subject Name</th><th>Update</th><th>Delete</th></tr>";
+		echo "<tr><th>ID</th><th>Subject Name</th><th>Date</th><th>Update</th><th>Delete</th></tr>";
 	
 	while($test=mysqli_fetch_assoc($result)){
 	
@@ -48,6 +48,7 @@ include"database.php";
 	
 		echo"<tr><td><font color='black'>" .$i."</font></td>";
 		echo"<td><font color='black'>" .$test['sub_name']."</font></td>";
+		echo"<td>" .date("d-m-Y ", strtotime($test['date']))."<br>".date("h:i A ", strtotime($test['date']))."</td>";
 		echo "<td><a href='editSubject.php?sub_id=$id'><span class='glyphicon glyphicon-edit'></span></a></td>";
 		echo "<td><a href='deleteSubject.php?sub_id=$id'><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
 	

@@ -44,42 +44,26 @@
 <div class="php">
         <?php
         $testname="";
-        $totque="";
 
-        if(isset($_POST['subid']) && isset($_POST['testname']) && isset($_POST['totque'])){
-        if(($_POST['subid']!="") && ($_POST['testname']!="") && ($_POST['totque']!="")){
+        if(isset($_POST['subid']) && isset($_POST['testname'])){
+        if(($_POST['subid']!="") && ($_POST['testname']!="")){
             $subid = $_POST['subid'];
             $testname = $_POST['testname'];
-            $totque = $_POST['totque'];
 
             $con=mysqli_connect("localhost","root","","quiz_exam");
         if(mysqli_connect_errno()) {//check connection
             echo "Failed to connect to MySQL:".mysqli_connect_error();
-      }
+        }   
 
-        if( $totque < 0 || $totque == 0 ){
-  
-            echo "<br>";
-            echo "<br>";
-            echo "&nbsp;&nbsp;Insert Questions Number !";
-
-        }else{
-
-            $sql = "INSERT INTO quiz_test (sub_id,test_name,total_question)VALUES('$subid','$testname','$totque')";
+            $sql = "INSERT INTO quiz_test (sub_id,test_name)VALUES('$subid','$testname')";
             if(!mysqli_query($con,$sql)){
             die('Error:'.mysqli_error($con));
-      }
-
-             echo "<br>";
-             echo "<br>";
+            }
+            
              echo "Test <b> \" $testname \"</b> Added Successfully.";
              mysqli_close($con);
     
-            }
-
       }else{
-            echo "<br>";
-            echo "<br>";
             echo "&nbsp;&nbsp;Please insert your test !";
       }
     }
@@ -116,10 +100,6 @@
         <tr>
           <td width ="300px" height="50px" >Enter Test Name  : </td>
           <td width ="500px" height="50px"><input class="form-control" name="testname" type="text" id="testname" value="<?php echo $testname?>"></td>
-        </tr>
-        <tr>
-          <td width ="300px" height="50px" >Enter Total Question  : </td>
-          <td width ="500px" height="50px"><input class="form-control" name="totque" type="number" id="totque" value="<?php echo $totque?>"></td>
         </tr>
       </table><br>
       <input type="submit" name="Submit1" value="Add">

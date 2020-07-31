@@ -35,13 +35,6 @@
       color:#D83D5A;
     }
 
-    .style1{
-      position: absolute;
-      padding-top: 33%;
-      right: 43%;
-      color:#D83D5A;
-    }
-
 </style>
 </head>
 <body>
@@ -60,31 +53,20 @@
 
     $Subid=$test['sub_id'];
     $Testname=$test['test_name'];
-    $Totalquestion=$test['total_question'];
 
 
 
   if(isset($_POST['subid'])){
-    if(($_POST['subid']!="") && ($_POST['testname']!="") && ($_POST['totque']!="")){
+    if(($_POST['subid']!="") && ($_POST['testname']!="")){
     $subid = $_POST['subid'];
     $testname=$_POST['testname'];
-    $totalquestion=$_POST['totque'];
 
     if (!$con) {
       die("Connection failed: " . mysqli_connect_error());
     }
 
-    if( $totalquestion < 0 || $totalquestion == 0 ){
-  
-             ?>
-
-            <div class="style1"><?php echo "Insert Questions Number !";?></div>
-
-            <?php
-
-    }else{
-
-    $sql = "UPDATE quiz_test SET sub_id = '$subid' , test_name = '$testname' , total_question = '$totalquestion' WHERE test_id = '$id'  ";
+    
+    $sql = "UPDATE quiz_test SET sub_id = '$subid' , test_name = '$testname' WHERE test_id = '$id'  ";
 
     if (mysqli_query($con, $sql)) {
       echo "Record updated successfully";
@@ -95,8 +77,6 @@
     mysqli_close($con);
 
     header("location: adminViewTest.php");
-
-    }
 
     }else{
 
@@ -140,10 +120,6 @@
         <tr>
           <td width ="300px" height="50px" >Edit Test Name  : </td>
           <td width ="500px" height="50px"><input class="form-control" value="<?php echo $Testname?>" name="testname" type="text" id="testname"></td>
-        </tr>
-        <tr>
-          <td width ="300px" height="50px" >Enter Total Question  : </td>
-          <td width ="500px" height="50px"><input class="form-control" value="<?php echo $Totalquestion?>" name="totque" type="number" id="totque"></td>
         </tr>
       </table><br>
       <input type="submit" name="Submit1" value="Update">
