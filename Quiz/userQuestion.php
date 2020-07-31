@@ -115,7 +115,7 @@ else
 					$wrong=$_SESSION[total]-$_SESSION[trueans];
 					echo "<tr><td style='color: red;'>Wrong Answer<td> ". $wrong."</td></tr></table>";
 
-					mysqli_query($con,"insert into quiz_result(loginid,test_id,score) values('$loginid',$tid,0)") or die(mysqli_error());
+					mysqli_query($con,"insert into quiz_result(loginid,test_id,total_question,score) values('$loginid',$tid,$_SESSION[total],0)") or die(mysqli_error());
 					echo "<h1><a href=userViewanswer.php> View Answer</a></h1>";
 					unset($_SESSION[total]);
 					unset($_SESSION[sid]);
@@ -135,7 +135,7 @@ else
 					$wrong=$_SESSION[total]-$_SESSION[trueans];
 					echo "<tr><td style='color: red;'>Wrong Answer<td> ". $wrong."</td></tr></table>";
 
-					mysqli_query($con,"insert into quiz_result(loginid,test_id,score) values('$loginid',$tid,$_SESSION[trueans])") or die(mysqli_error());
+					mysqli_query($con,"insert into quiz_result(loginid,test_id,total_question,score) values('$loginid',$tid,$_SESSION[total],$_SESSION[trueans])") or die(mysqli_error());
 					echo "<h1><a href=userViewanswer.php> View Answer</a></h1>";
 					unset($_SESSION[total]);
 					unset($_SESSION[sid]);

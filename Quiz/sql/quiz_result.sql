@@ -31,6 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `quiz_result` (
   `loginid` varchar(120) DEFAULT NULL,
   `test_id` int(15) DEFAULT NULL,
+  `total_question` int(15) DEFAULT NULL,
   `test_date` datetime NOT NULL DEFAULT current_timestamp(),
   `score` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
