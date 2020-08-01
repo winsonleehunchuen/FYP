@@ -4,7 +4,7 @@
 session_start();
 
 	if (!isset($_SESSION['loginAdmin'])) {
-		header('Location: index.php');
+		header('Location: Securedpage.php');
 		}
 
 ?>
