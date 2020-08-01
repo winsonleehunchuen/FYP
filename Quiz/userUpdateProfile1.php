@@ -8,7 +8,7 @@
 
   html{
     background-repeat: no-repeat;
-    background-size: 1600px 980px;
+    background-size: 100% 100%;
     height:980px;
     background-image:url("images/background1.jpg");
   }
