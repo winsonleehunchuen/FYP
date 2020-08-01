@@ -60,18 +60,18 @@ extract($_SESSION);
 
 if(isset($subid) && isset($testid))
 {
-$_SESSION[sid]=$subid;
-$_SESSION[tid]=$testid;
+$_SESSION['sid']=$subid;
+$_SESSION['tid']=$testid;
 header("location:userQuestion.php");
 }
 
 $result=mysqli_query($con,"select * from quiz_question where test_id=$tid");
 
-if(isset($_SESSION[total])=="")
+if(isset($_SESSION['total'])=="")
 {
-	$_SESSION[total]="";
+	$_SESSION['total']="";
 	mysqli_query("delete from quiz_useranswer where id='" . session_id() ."'") or die(mysqli_error());
-	$_SESSION[trueans]="";
+	$_SESSION['trueans']="";
 	
 }
 else
@@ -79,47 +79,47 @@ else
 
 		if($submit=='Next Question' && isset($answer))
 		{
-				mysqli_data_seek($result,$_SESSION[total]);
+				mysqli_data_seek($result,$_SESSION['total']);
 				$row= mysqli_fetch_row($result);	
 				mysqli_query($con,"insert into quiz_useranswer(id, test_id, question, ans1,ans2,ans3,ans4,true_ans,your_ans) values ('".session_id()."', $tid,'$row[2]','$row[3]','$row[4]','$row[5]', '$row[6]','$row[7]','$answer')") or die(mysqli_error());
 
-				$_SESSION[total]=$_SESSION[total]+1;
+				$_SESSION['total']=$_SESSION['total']+1;
 
 				if($answer==$row[7])
 				{
-					$_SESSION[trueans]=$_SESSION[trueans]+1;
+					$_SESSION['trueans']=$_SESSION['trueans']+1;
 				}
 				
 		}
 		else if($submit1=='Get Result' && isset($answer))
 		{
-				mysqli_data_seek($result,$_SESSION[total]);
+				mysqli_data_seek($result,$_SESSION['total']);
 				$row= mysqli_fetch_row($result);	
 				mysqli_query($con,"insert into quiz_useranswer(id, test_id, question, ans1,ans2,ans3,ans4,true_ans,your_ans) values ('".session_id()."', $tid,'$row[2]','$row[3]','$row[4]','$row[5]', '$row[6]','$row[7]','$answer')") or die(mysqli_error());
 
-				$_SESSION[total]=$_SESSION[total]+1;
+				$_SESSION['total']=$_SESSION['total']+1;
 
 				if($answer==$row[7])
 				{
-					$_SESSION[trueans]=$_SESSION[trueans]+1;
+					$_SESSION['trueans']=$_SESSION['trueans']+1;
 				}
 
-				if( $_SESSION[trueans] == 0){
+				if( $_SESSION['trueans'] == 0){
 
 				?><div class="move"><?php
 
 					echo "<h1>Result</h1>";
-					echo "<table align=center><tr><td>Total Question<td> $_SESSION[total]</td></tr>";
+					echo "<table align=center><tr><td>Total Question<td> ".$_SESSION['total']."</td></tr>";
 					echo "<tr><td style='color:#00CC66;'>True Answer<td>"."0</td></tr>";
-					$wrong=$_SESSION[total]-$_SESSION[trueans];
+					$wrong=$_SESSION['total']-$_SESSION['trueans'];
 					echo "<tr><td style='color: red;'>Wrong Answer<td> ". $wrong."</td></tr></table>";
 
-					mysqli_query($con,"insert into quiz_result(loginid,test_id,total_question,score) values('$loginid',$tid,$_SESSION[total],0)") or die(mysqli_error());
+					mysqli_query($con,"insert into quiz_result(loginid,test_id,total_question,score) values('$loginid',$tid,".$_SESSION['total'].",0)") or die(mysqli_error());
 					echo "<h1><a href=userViewanswer.php> View Answer</a></h1>";
-					unset($_SESSION[total]);
-					unset($_SESSION[sid]);
-					unset($_SESSION[tid]);
-					unset($_SESSION[trueans]);
+					unset($_SESSION['total']);
+					unset($_SESSION['sid']);
+					unset($_SESSION['tid']);
+					unset($_SESSION['trueans']);
 					exit;
 
 				?></div><?php
@@ -129,17 +129,17 @@ else
 				?><div class="move"><?php
 
 					echo "<h1>Result</h1>";
-					echo "<table align=center><tr><td>Total Question<td> $_SESSION[total]</td></tr>";
-					echo "<tr><td style='color:#00CC66;'>True Answer<td>".$_SESSION[trueans]."</td></tr>";
-					$wrong=$_SESSION[total]-$_SESSION[trueans];
+					echo "<table align=center><tr><td>Total Question<td> ".$_SESSION['total']."</td></tr>";
+					echo "<tr><td style='color:#00CC66;'>True Answer<td>".$_SESSION['trueans']."</td></tr>";
+					$wrong=$_SESSION['total']-$_SESSION['trueans'];
 					echo "<tr><td style='color: red;'>Wrong Answer<td> ". $wrong."</td></tr></table>";
 
-					mysqli_query($con,"insert into quiz_result(loginid,test_id,total_question,score) values('$loginid',$tid,$_SESSION[total],$_SESSION[trueans])") or die(mysqli_error());
+					mysqli_query($con,"insert into quiz_result(loginid,test_id,total_question,score) values('$loginid',$tid,".$_SESSION['total'].",$_SESSION[trueans])") or die(mysqli_error());
 					echo "<h1><a href=userViewanswer.php> View Answer</a></h1>";
-					unset($_SESSION[total]);
-					unset($_SESSION[sid]);
-					unset($_SESSION[tid]);
-					unset($_SESSION[trueans]);
+					unset($_SESSION['total']);
+					unset($_SESSION['sid']);
+					unset($_SESSION['tid']);
+					unset($_SESSION['trueans']);
 					exit;
 
 				?></div><?php
@@ -157,17 +157,17 @@ else
 
 <?php
 
-if($_SESSION[total]>mysqli_num_rows($result)-1)
+if($_SESSION['total']>mysqli_num_rows($result)-1)
 {
-unset($_SESSION[total]);
+unset($_SESSION['total']);
 echo "<h2 align=center>Sorry, temporarily haven't add Question😥</h2>";
 echo "<center>Please <a href=userpage.php> Choose Again</a></center>";
 exit;
 }
 
-mysqli_data_seek($result,$_SESSION[total]);
+mysqli_data_seek($result,$_SESSION['total']);
 $row= mysqli_fetch_row($result);
-$quenumber=$_SESSION[total]+1;
+$quenumber=$_SESSION['total']+1;
 
 echo "<form method=post id=form1>";
 echo "<table style='padding-left:10%'>";
@@ -177,7 +177,7 @@ echo "<tr><td><input type=radio name=answer value=2>$row[4]</td></tr>";
 echo "<tr><td><input type=radio name=answer value=3>$row[5]</td></tr>";
 echo "<tr><td><input type=radio name=answer value=4>$row[6]</td></tr>";
 
-if($_SESSION[total]<mysqli_num_rows($result)-1)
+if($_SESSION['total']<mysqli_num_rows($result)-1)
 echo "<tr><td><input type=submit name=submit value='Next Question'></td></tr>";
 
 else
