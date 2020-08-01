@@ -1,4 +1,13 @@
 <script src="https://kit.fontawesome.com/4565a9aee0.js" crossorigin="anonymous"></script>
+
+<?php
+	session_start();
+
+	if (!isset($_SESSION['loginid'])) {
+		header('Location: index.php');
+		}
+?>
+
 <style>
 *{
 	font-family: 'Merienda One', cursive;

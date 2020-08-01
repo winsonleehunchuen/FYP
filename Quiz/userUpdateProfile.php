@@ -1,12 +1,3 @@
-<?php
-session_start();
-include"database.php";
-$user_check=$_SESSION['loginid'];
-$ses_sql=mysqli_query($con,"select loginid,id from quizregisterpage where loginid='$user_check'");
-$row=mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
-$loggedin_session=$row['loginid'];
-$loggedin_id=$row['id'];
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,6 +47,14 @@ $loggedin_id=$row['id'];
 </head>
 <body>
 <?php include"menu.php";?>
+<?php
+include"database.php";
+$user_check=$_SESSION['loginid'];
+$ses_sql=mysqli_query($con,"select loginid,id from quizregisterpage where loginid='$user_check'");
+$row=mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
+$loggedin_session=$row['loginid'];
+$loggedin_id=$row['id'];
+?>
 <center>
 
 	<div class="move">
