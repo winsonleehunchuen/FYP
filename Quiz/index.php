@@ -17,7 +17,7 @@
 
 	html{
 		background-repeat: no-repeat;
-		background-size: 1600px 880px;
+		background-size: 100% 100%;
 		height:880px;
 		background-image:url("images/background.jpg");
 	}
