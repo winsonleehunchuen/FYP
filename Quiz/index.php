@@ -189,6 +189,7 @@
 						else if($uname == "admin" && $password == "admin"){
 
 								header("Location:adminViewSubject.php");
+								$_SESSION['time'] = time();
 								$_SESSION['loginAdmin'] = $uname;
 
 						}
@@ -203,6 +204,7 @@
 
 								}else {
 									$_SESSION['loginid'] = $uname;
+									$_SESSION['time'] = time();
 									header("Location:userpage.php");
 								}
 

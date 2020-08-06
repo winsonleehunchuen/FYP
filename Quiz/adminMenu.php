@@ -6,6 +6,17 @@ session_start();
 	if (!isset($_SESSION['loginAdmin'])) {
 		header('Location: Securedpage.php');
 		}
+	
+	//check if user session over.
+	if(isset($_SESSION['time'])){
+		if(time() - $_SESSION['time']  > 3600){
+		   session_unset();
+		   session_destroy();
+		   header("Location: Securedpage.php");
+		}else{
+		   $_SESSION['time'] = time();
+		}
+	}
 
 ?>
 
