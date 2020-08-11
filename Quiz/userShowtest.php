@@ -71,6 +71,11 @@ while($row1=mysqli_fetch_row($result2)){
 $row2=mysqli_fetch_row($result1);
 
 	if($row2 != ""){
+
+		unset($_SESSION['total']);
+		unset($_SESSION['sid']);
+		unset($_SESSION['tid']);
+		unset($_SESSION['trueans']);
 		
 	echo "<tr><td align=center><a href=userQuestion.php?testid=$row1[0]&subid=$subid><font size=4>
 	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $row1[2]  </td><td> <font size=2>($row2[2] questions)</font> </td></tr></font></a>";

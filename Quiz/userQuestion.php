@@ -58,6 +58,11 @@ extract($_POST);
 extract($_GET);
 extract($_SESSION);
 
+if(!isset($_SESSION['sid']) && !isset($_SESSION['tid']))
+{
+	header('Location: userpage.php');
+}
+
 if(isset($subid) && isset($testid))
 {
 $_SESSION['sid']=$subid;
@@ -70,7 +75,7 @@ $result=mysqli_query($con,"select * from quiz_question where test_id=$tid");
 if(isset($_SESSION['total'])=="")
 {
 	$_SESSION['total']="";
-	mysqli_query("delete from quiz_useranswer where id='" . session_id() ."'") or die(mysqli_error());
+	mysqli_query($con,"delete from quiz_useranswer where id='" . session_id() ."'") or die(mysqli_error());
 	$_SESSION['trueans']="";
 	
 }

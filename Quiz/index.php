@@ -203,6 +203,12 @@
 										echo "<font color=#D83D5A>Invalid Login ID and Password!</font>";
 
 								}else {
+									
+									unset($_SESSION['total']);
+									unset($_SESSION['sid']);
+									unset($_SESSION['tid']);
+									unset($_SESSION['trueans']);
+
 									$_SESSION['loginid'] = $uname;
 									$_SESSION['time'] = time();
 									header("Location:userpage.php");

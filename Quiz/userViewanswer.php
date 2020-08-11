@@ -51,6 +51,14 @@ include"database.php";
 extract($_POST);
 extract($_SESSION);
 
+$check=mysqli_query($con,"select * from quiz_useranswer ");
+$Done=mysqli_fetch_row($check);
+if($Done == ""){
+
+	header('Location: userpage.php');
+
+} else {
+
 if($submit == 'Next Question')
 {
 	$_SESSION['total']=$_SESSION['total']+1;
@@ -63,6 +71,8 @@ if($submit1 == 'Finish')
 	unset($_SESSION['total']);
 	header("Location: userpage.php");
 	exit;
+}
+
 }
 ?>
 
