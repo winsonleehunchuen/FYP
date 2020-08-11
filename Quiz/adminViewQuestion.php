@@ -62,7 +62,7 @@ include"database.php";
 
 		$i1=1;
 
-		$result2=mysqli_query($con,"select q.que_id,t.test_name,q.que_desc,q.date from quiz_test t, quiz_question q where t.test_id=q.test_id and t.test_name LIKE '%$testN%'")or die(mysqli_error());
+		$result2=mysqli_query($con,"select q.que_id,t.test_name,q.que_desc,q.date from quiz_test t, quiz_question q where t.test_id=q.test_id and t.test_name LIKE '%$testN%'");
 
 
 		if(mysqli_num_rows($result2) <= 0 || $testN == ""){
@@ -95,7 +95,7 @@ include"database.php";
 	}else{
 		$i=1;
 
-		$result=mysqli_query($con,"select q.que_id,t.test_name,q.que_desc,q.date from quiz_question q, quiz_test t where t.test_id=q.test_id order by q.que_id") or die(mysqli_error());
+		$result=mysqli_query($con,"select q.que_id,t.test_name,q.que_desc,q.date from quiz_question q, quiz_test t where t.test_id=q.test_id order by q.que_id");
 
 		echo "<br><br><br><tr><th>ID</th><th>Test Name</th><th>Question</th><th>Date</th><th>Update</th><th>Delete</th></tr>";
 

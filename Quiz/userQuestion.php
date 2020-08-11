@@ -75,7 +75,7 @@ $result=mysqli_query($con,"select * from quiz_question where test_id=$tid");
 if(isset($_SESSION['total'])=="")
 {
 	$_SESSION['total']="";
-	mysqli_query($con,"delete from quiz_useranswer where id='" . session_id() ."'") or die(mysqli_error());
+	mysqli_query($con,"delete from quiz_useranswer where id='" . session_id() ."'");
 	$_SESSION['trueans']="";
 	
 }
@@ -86,7 +86,7 @@ else
 		{
 				mysqli_data_seek($result,$_SESSION['total']);
 				$row= mysqli_fetch_row($result);	
-				mysqli_query($con,"insert into quiz_useranswer(id, test_id, question, ans1,ans2,ans3,ans4,true_ans,your_ans) values ('".session_id()."', $tid,'$row[2]','$row[3]','$row[4]','$row[5]', '$row[6]','$row[7]','$answer')") or die(mysqli_error());
+				mysqli_query($con,"insert into quiz_useranswer(id, test_id, question, ans1,ans2,ans3,ans4,true_ans,your_ans) values ('".session_id()."', $tid,'$row[2]','$row[3]','$row[4]','$row[5]', '$row[6]','$row[7]','$answer')");
 
 				$_SESSION['total']=$_SESSION['total']+1;
 
@@ -100,7 +100,7 @@ else
 		{
 				mysqli_data_seek($result,$_SESSION['total']);
 				$row= mysqli_fetch_row($result);	
-				mysqli_query($con,"insert into quiz_useranswer(id, test_id, question, ans1,ans2,ans3,ans4,true_ans,your_ans) values ('".session_id()."', $tid,'$row[2]','$row[3]','$row[4]','$row[5]', '$row[6]','$row[7]','$answer')") or die(mysqli_error());
+				mysqli_query($con,"insert into quiz_useranswer(id, test_id, question, ans1,ans2,ans3,ans4,true_ans,your_ans) values ('".session_id()."', $tid,'$row[2]','$row[3]','$row[4]','$row[5]', '$row[6]','$row[7]','$answer')");
 
 				$_SESSION['total']=$_SESSION['total']+1;
 
@@ -119,7 +119,7 @@ else
 					$wrong=$_SESSION['total']-$_SESSION['trueans'];
 					echo "<tr><td style='color: red;'>Wrong Answer<td> ". $wrong."</td></tr></table>";
 
-					mysqli_query($con,"insert into quiz_result(loginid,test_id,total_question,score) values('$loginid',$tid,".$_SESSION['total'].",0)") or die(mysqli_error());
+					mysqli_query($con,"insert into quiz_result(loginid,test_id,total_question,score) values('$loginid',$tid,".$_SESSION['total'].",0)");
 					echo "<h1><a href=userViewanswer.php> View Answer</a></h1>";
 					unset($_SESSION['total']);
 					unset($_SESSION['sid']);
@@ -139,7 +139,7 @@ else
 					$wrong=$_SESSION['total']-$_SESSION['trueans'];
 					echo "<tr><td style='color: red;'>Wrong Answer<td> ". $wrong."</td></tr></table>";
 
-					mysqli_query($con,"insert into quiz_result(loginid,test_id,total_question,score) values('$loginid',$tid,".$_SESSION['total'].",".$_SESSION['trueans'].")") or die(mysqli_error());
+					mysqli_query($con,"insert into quiz_result(loginid,test_id,total_question,score) values('$loginid',$tid,".$_SESSION['total'].",".$_SESSION['trueans'].")");
 					echo "<h1><a href=userViewanswer.php> View Answer</a></h1>";
 					unset($_SESSION['total']);
 					unset($_SESSION['sid']);

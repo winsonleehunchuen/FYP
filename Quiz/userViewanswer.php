@@ -67,7 +67,7 @@ if($submit == 'Next Question')
 
 if($submit1 == 'Finish')
 {
-	mysqli_query($con,"delete from quiz_useranswer where id='" . session_id() ."'") or die(mysqli_error());
+	mysqli_query($con,"delete from quiz_useranswer where id='" . session_id() ."'");
 	unset($_SESSION['total']);
 	header("Location: userpage.php");
 	exit;
@@ -83,7 +83,7 @@ if($submit1 == 'Finish')
 </table>
 
 <?php
-$result=mysqli_query($con,"select * from quiz_useranswer where id='" . session_id() ."'") or die(mysqli_error());
+$result=mysqli_query($con,"select * from quiz_useranswer where id='" . session_id() ."'");
 mysqli_data_seek($result,$_SESSION['total']);
 $row= mysqli_fetch_row($result);
 $quenumber=$_SESSION['total']+1;

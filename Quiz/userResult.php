@@ -41,7 +41,7 @@ include"database.php";
 
 extract($_SESSION);
 
-$result=mysqli_query($con,"select t.test_name,r.total_question,r.test_date,r.score from quiz_test t, quiz_result r where t.test_id=r.test_id and r.loginid='$loginid'") or die(mysqli_error());
+$result=mysqli_query($con,"select t.test_name,r.total_question,r.test_date,r.score from quiz_test t, quiz_result r where t.test_id=r.test_id and r.loginid='$loginid'");
 
 if(mysqli_num_rows($result) == "")
 {

@@ -61,7 +61,7 @@
 
 		$i1=1;
 
-		$result1=mysqli_query($con,"select t.test_id,s.sub_name,t.test_name,t.date from quiz_test t, quiz_subject s where s.sub_id=t.sub_id and s.sub_name LIKE '%$subject%'")or die(mysqli_error());
+		$result1=mysqli_query($con,"select t.test_id,s.sub_name,t.test_name,t.date from quiz_test t, quiz_subject s where s.sub_id=t.sub_id and s.sub_name LIKE '%$subject%'");
 
 		if(mysqli_num_rows($result1) <= 0 || $subject == ""){
 
@@ -93,7 +93,7 @@
 	}else{
 		$i=1;
 
-		$result=mysqli_query($con,"select t.test_id,s.sub_name,t.test_name,t.date from quiz_test t, quiz_subject s where s.sub_id=t.sub_id order by t.test_id") or die(mysqli_error());
+		$result=mysqli_query($con,"select t.test_id,s.sub_name,t.test_name,t.date from quiz_test t, quiz_subject s where s.sub_id=t.sub_id order by t.test_id");
 	
 		echo "<br><br><br><tr><th>ID</th><th>Subject Name</th><th>Test Name</th><th>Date</th><th>Update</th><th>Delete</th></tr>";
 			
