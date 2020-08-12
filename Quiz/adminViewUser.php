@@ -37,7 +37,7 @@ include"database.php";
 
 	$i=1;
 
-	$result=mysqli_query($con,"select * from quizregisterpage");	
+	$result=mysqli_query($con,"select * from quizregisterpage where user_type='user'");	
 		
 		echo"<h1 style='color:black;'>Registered User Detail</h1><br>";
 		echo "<tr><th>ID</th><th>Login ID</th><th>Name</th><th>Address</th><th>City</th><th>Phone</th><th>Email</th><th>Birthday</th><th>Password</th><th>Delete</th></tr>";

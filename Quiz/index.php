@@ -186,32 +186,36 @@
 						if($uname == "" || $password == "" ){
 							echo "<font color=#D83D5A>Invalid Login ID and Password!</font>";
 						}
-						else if($uname == "admin" && $password == "admin"){
-
-								header("Location:adminViewSubject.php");
-								$_SESSION['time'] = time();
-								$_SESSION['loginAdmin'] = $uname;
-
-						}
 						else{
 							if ($uname != "" && $password != ""){
 
-								$result = mysqli_query($con,"select * from quizregisterpage where loginid='".$uname."' and password='".$password."'");
+								$result = mysqli_query($con,"select * from quizregisterpage where loginid='".$uname."' and password='".$password."' LIMIT 1");
 								
-								if(mysqli_num_rows($result) == ""){
+								if (mysqli_num_rows($result) == 1) { // user found
+									// check if user is admin or user
 
-										echo "<font color=#D83D5A>Invalid Login ID and Password!</font>";
+									$logged_in_user = mysqli_fetch_assoc($result);
+									if ($logged_in_user['user_type'] == 'admin') {
+						
+										header("Location:adminViewSubject.php");
+										$_SESSION['time'] = time();
+										$_SESSION['loginAdmin'] = $uname;	 
 
-								}else {
+									}else{
+
+										unset($_SESSION['total']);
+										unset($_SESSION['sid']);
+										unset($_SESSION['tid']);
+										unset($_SESSION['trueans']);
+
+										$_SESSION['loginid'] = $uname;
+										$_SESSION['time'] = time();
+										header("Location:userpage.php");
+
+									}
 									
-									unset($_SESSION['total']);
-									unset($_SESSION['sid']);
-									unset($_SESSION['tid']);
-									unset($_SESSION['trueans']);
-
-									$_SESSION['loginid'] = $uname;
-									$_SESSION['time'] = time();
-									header("Location:userpage.php");
+								}else{
+									echo "<font color=#D83D5A>Invalid Login ID and Password!</font>";
 								}
 
 							}

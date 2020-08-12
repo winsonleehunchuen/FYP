@@ -32,6 +32,7 @@ CREATE TABLE `quizregisterpage` (
   `id` int(6) UNSIGNED NOT NULL,
   `loginid` varchar(30) NOT NULL,
   `username` varchar(30) NOT NULL,
+  `user_type` varchar(300) NOT NULL,
   `address` varchar(300) NOT NULL,
   `city` varchar(30) NOT NULL,
   `phone` varchar(30) NOT NULL,
@@ -45,9 +46,10 @@ CREATE TABLE `quizregisterpage` (
 -- Dumping data for table `quizregisterpage`
 --
 
-INSERT INTO `quizregisterpage` (`id`, `loginid`, `username`, `address`, `city`, `phone`, `email`, `birthday`, `password`, `confrimpassword`) VALUES
-(1, 'winson', 'LeeHunChuen', '72, Jalan SS 2/60, SS 2, 47300 Petaling Jaya, Selangor', 'Kajang', '012-5058168', 'leehunchuen@gmail.com', '1997-11-12', '123', '123'),
-(2, 'andrew', 'boonboon', 'selangor', 'Kajang', '012-5052138', 'andrewboon@hotmail.com', '2020-06-27', '1234', '1234');
+INSERT INTO `quizregisterpage` (`id`, `loginid`, `username`, `user_type`, `address`, `city`, `phone`, `email`, `birthday`, `password`, `confrimpassword`) VALUES
+(1, 'admin', 'LeeHunChuen', 'admin', '72, Jalan SS 2/60, SS 2, 47300 Petaling Jaya, Selangor', 'Kajang', '012-5058168', 'leehunchuen@gmail.com', '1997-11-12', 'admin', 'admin'),
+(2, 'winson', 'LeeHunChuen', 'user', '72, Jalan SS 2/60, SS 2, 47300 Petaling Jaya, Selangor', 'Kajang', '012-5058168', 'leehunchuen@gmail.com', '1997-11-12', '123', '123'),
+(3, 'andrew', 'boonboon', 'user', 'selangor', 'Kajang', '012-5052138', 'andrewboon@hotmail.com', '2020-06-27', '1234', '1234');
 
 --
 -- Indexes for dumped tables
@@ -67,7 +69,7 @@ ALTER TABLE `quizregisterpage`
 -- AUTO_INCREMENT for table `quizregisterpage`
 --
 ALTER TABLE `quizregisterpage`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

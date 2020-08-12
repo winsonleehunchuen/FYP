@@ -228,13 +228,13 @@
             $sql_l = "SELECT * FROM quizregisterpage WHERE loginid='$loginid'";
             $res_l = mysqli_query($con, $sql_l);
 
-        if (mysqli_num_rows($res_l) > 0 || $loginid == "admin") {
+        if (mysqli_num_rows($res_l) > 0) {
 
             $loginid_error = "Sorry... login id already taken";  
 
         }else{
 
-          $sql = "INSERT INTO quizregisterpage (loginid, username, address, city, phone, email, birthday, password, confrimpassword)VALUES('$loginid', '$username', '$address', '$city', '$phone', '$email','$birthday','$password','$cpassword')";
+          $sql = "INSERT INTO quizregisterpage (loginid, username, user_type, address, city, phone, email, birthday, password, confrimpassword)VALUES('$loginid', '$username', 'user', '$address', '$city', '$phone', '$email','$birthday','$password','$cpassword')";
 
           if(!mysqli_query($con,$sql)){
 
