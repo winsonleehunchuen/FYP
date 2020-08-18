@@ -300,7 +300,7 @@
           <?php endif ?>
           </div></td></tr>
 
-          <tr><td><h4>Confrim Password : </h4></td><td>
+          <tr><td><h4>Confirm Password : </h4></td><td>
           <div <?php if (isset($password_error)): ?> class="form_error" <?php endif ?> >
           <input type="password" name="CPassword" value="<?php echo $cpassword; ?>" required>
           <?php if (isset($password_error)): ?>
