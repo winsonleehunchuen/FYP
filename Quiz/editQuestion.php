@@ -133,7 +133,7 @@
     <form method="post">
       <table>
         <tr>
-          <td width ="300px" height="50px" >Edit Select Test Name  : </td>
+          <td width ="300px" height="50px" >Edit Select Test ID  : </td>
            <td width ="1100px" height="50px"><select class="form-control" style='width:90%;' value="<?php echo $Testid?>" name="testid">
             <?php
 

@@ -115,7 +115,7 @@
 
       <table>
         <tr>
-          <td width ="300px" height="50px" >Select Test Name  : </td>
+          <td width ="300px" height="50px" >Select Test ID  : </td>
           <td width ="1100px" height="50px"><select class="form-control" style='width:90%;' name="testid">
             <?php
 
