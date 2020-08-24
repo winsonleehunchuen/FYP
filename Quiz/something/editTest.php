@@ -1,3 +1,4 @@
+//total question
 <!DOCTYPE html>
 <html>
 <head>
@@ -125,7 +126,7 @@
                     while($row=mysqli_fetch_array($result))
 
                 {
-                if($row[0]==$subid)
+                if($row[0]==$Subid)
                 {
                   echo "<option value='$row[0]' selected>$row[1]</option>";
                 }
