@@ -41,7 +41,7 @@ CREATE TABLE `quizfeedback` (
 --
 
 INSERT INTO `quizfeedback` (`id`, `name`, `email`, `feedback`, `reg_date`) VALUES
-(1, 'andrew', 'andrew@hotmail.com', 'Well Done!!', '2020-07-09 09:05:26');
+(1, 'andrew', 'andrew@hotmail.com', 'Well Done!!', '2023-03-09 09:05:26');
 
 --
 -- Indexes for dumped tables

@@ -57,10 +57,11 @@ where t.test_id=q.test_id and t.sub_id = $subid GROUP BY q.test_id");
 $result2=mysqli_query($con,"select * from quiz_test where sub_id = $subid");
 //$total=mysqli_query($con,"SELECT count(test_id) FROM quiz_question GROUP BY test_id ");
 
-if(mysqli_num_rows($result2) == "")
+if(mysqli_num_rows($result2) == "") 
 {
 
 	echo "<br><br><h2> Sorry, No Quiz for this Subject 😅 </h2>";
+	echo "<center>Please <a href=userpage.php> Choose Again</a></center>";
 	
 }else{
 
@@ -76,7 +77,7 @@ $row2=mysqli_fetch_row($result1);
 		unset($_SESSION['sid']);
 		unset($_SESSION['tid']);
 		unset($_SESSION['trueans']);
-		
+		 
 	echo "<tr><td align=center><a href=userQuestion.php?testid=$row1[0]&subid=$subid><font size=4>
 	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $row1[2]  </td><td> <font size=2>($row2[2] questions)</font> </td></tr></font></a>";
 

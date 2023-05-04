@@ -105,7 +105,7 @@
   
 </style>
 <head>
-  <title>Register Page</title>
+  <title>Feedback Page</title>
 </head>
 <body>
 

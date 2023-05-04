@@ -287,11 +287,11 @@
 					</div>
  					<br>
  					<table>
-    					<tr><th rowspan="4" width=10><img src="images/me.jpg" width=180 height=180 ></th>
+    					<tr><th rowspan="4" width=51%><img src="images/me.jpg" width=180 height=180 ></th>
     					<td width=50><p>Lee Hun Chuen ✅</p></td></tr>
     					<tr><td><p>012-5058168 ✅</p></td></tr>
 						<tr><td><p>leehunchuen8669@e.djzhlc.edu.my ✅</p></td></tr>
-						<tr><td><p>Software Engineering and Mobile Application Development (SEMD) ✅</p></td></tr>
+						<tr><td width=263px><p>Software Engineering and Mobile Application Development (SEMD) ✅</p></td></tr>
 					</table>
   					</div>
 				</div>
